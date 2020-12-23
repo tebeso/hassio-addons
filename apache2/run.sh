@@ -111,7 +111,7 @@ fi
 if [[ ! $default_conf =~ ^(default|get_config)$ ]]; then 
   if [ -f $default_conf ]; then
     if [ -d /etc/apache2/sites-enabled ]; then
-    mkdir /etc/apache2/sites-enabled
+		mkdir /etc/apache2/sites-enabled
     fi
     cp $default_conf /etc/apache2/sites-enabled/000-default.conf
     echo "Your custom apache config at $default_conf will be used."
@@ -133,7 +133,7 @@ fi
 if [ "$default_ssl_conf" != "default" ]; then
   if [ -f $default_ssl_conf ]; then
     if [ -d /etc/apache2/sites-enabled ]; then
-    mkdir /etc/apache2/sites-enabled
+		mkdir /etc/apache2/sites-enabled
     fi
     cp $default_ssl_conf /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "Your custom apache config at $default_ssl_conf will be used."
