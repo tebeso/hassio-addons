@@ -7,7 +7,7 @@
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "startup": "application",
     "boot": "auto",
-    "webui": "[PROTO:ssl]://[HOST]:[PORT:80]",
+    "webui": "[PROTO:ssl]://[HOST]:[PORT:80]/public",
     "map": ["share:rw", "media:rw", "ssl"],
     "ingress": true,
     "panel_icon": "mdi:web-box",
