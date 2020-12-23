@@ -23,7 +23,6 @@ if [ ! -d $DocumentRoot ]; then
   echo "A default website will now be used"
   mkdir $webrootdocker
   cp /index.php $webrootdocker
-  DocumentRoot=$webrootdocker
 else
   #Create Shortcut to shared html folder
   ln -s $DocumentRoot /var/www/localhost/htdocs
@@ -58,7 +57,13 @@ if [ $ssl = "true" ] && [ $default_conf = "default" ]; then
     echo "<VirtualHost *:80>" > /etc/apache2/sites-enabled/000-default.conf
     echo "ServerName $website_name"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "ServerAdmin webmaster@localhost"  >> /etc/apache2/sites-enabled/000-default.conf
-    echo "DocumentRoot $webrootdocker"  >> /etc/apache2/sites-enabled/000-default.conf
+    echo "DocumentRoot $webrootdocker/public"  >> /etc/apache2/sites-enabled/000-default.conf
+
+	echo "<Directory $webrootdocker>" >> /etc/apache2/sites-enabled/000-default.conf
+    echo "	Options Indexes MultiViews" >> /etc/apache2/sites-enabled/000-default.conf
+    echo "	AllowOverride None" >> /etc/apache2/sites-enabled/000-default.conf
+    echo "	Require all granted" >> /etc/apache2/sites-enabled/000-default.conf
+    echo "</Directory>" >> /etc/apache2/sites-enabled/000-default.conf
 
     echo "#Redirect http to https"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "    RewriteEngine On"  >> /etc/apache2/sites-enabled/000-default.conf
@@ -69,6 +74,8 @@ if [ $ssl = "true" ] && [ $default_conf = "default" ]; then
     echo "    ErrorLog /var/log/error.log"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "        #CustomLog /var/log/access.log combined"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "</VirtualHost>"  >> /etc/apache2/sites-enabled/000-default.conf
+
+	
 
     echo "<IfModule mod_ssl.c>"  > /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "<VirtualHost *:443>"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
