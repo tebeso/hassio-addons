@@ -23,6 +23,7 @@ if [ ! -d $DocumentRoot ]; then
   echo "A default website will now be used"
   mkdir $webrootdocker
   cp /index.php $webrootdocker
+  DocumentRoot = $webrootdocker
 else
   #Create Shortcut to shared html folder
   ln -s $DocumentRoot /var/www/localhost/htdocs
