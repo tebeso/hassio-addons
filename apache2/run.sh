@@ -59,7 +59,7 @@ if [ $ssl = "true" ] && [ $default_conf = "default" ]; then
     echo "ServerAdmin webmaster@localhost"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "DocumentRoot $webrootdocker/public"  >> /etc/apache2/sites-enabled/000-default.conf
 
-	echo "<Directory $webrootdocker>" >> /etc/apache2/sites-enabled/000-default.conf
+	echo "<Directory $webrootdocker/public>" >> /etc/apache2/sites-enabled/000-default.conf
     echo "	Options Indexes MultiViews" >> /etc/apache2/sites-enabled/000-default.conf
     echo "	AllowOverride None" >> /etc/apache2/sites-enabled/000-default.conf
     echo "	Require all granted" >> /etc/apache2/sites-enabled/000-default.conf
@@ -71,8 +71,8 @@ if [ $ssl = "true" ] && [ $default_conf = "default" ]; then
     echo "    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "#End Redirect http to https"  >> /etc/apache2/sites-enabled/000-default.conf
 
-    echo "    ErrorLog /var/log/error.log"  >> /etc/apache2/sites-enabled/000-default.conf
-    echo "        #CustomLog /var/log/access.log combined"  >> /etc/apache2/sites-enabled/000-default.conf
+    echo "    ErrorLog $webrootdocker/error.log"  >> /etc/apache2/sites-enabled/000-default.conf
+    echo "        #CustomLog $webrootdocker/access.log combined"  >> /etc/apache2/sites-enabled/000-default.conf
     echo "</VirtualHost>"  >> /etc/apache2/sites-enabled/000-default.conf
 
 	
@@ -81,10 +81,10 @@ if [ $ssl = "true" ] && [ $default_conf = "default" ]; then
     echo "<VirtualHost *:443>"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "ServerName $website_name"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "ServerAdmin webmaster@localhost"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
-    echo "DocumentRoot $webrootdocker"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
+    echo "DocumentRoot $webrootdocker/public"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
 
-    echo "    ErrorLog /var/log/error.log"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
-    echo "        #CustomLog /var/log/access.log combined"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
+    echo "    ErrorLog $webrootdocker/error.log"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
+    echo "        #CustomLog $webrootdocker/access.log combined"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "SSLCertificateFile /ssl/$certfile"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "SSLCertificateKeyFile /ssl/$keyfile"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
     echo "</VirtualHost>"  >> /etc/apache2/sites-enabled/000-default-le-ssl.conf
