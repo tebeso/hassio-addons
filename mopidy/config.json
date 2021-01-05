@@ -4,6 +4,7 @@
     "slug": "mopidy",
     "description": "mopidy music server",
     "url": "https://gitlab.com/ndarilek/hassio-addons/tree/master/mopidy",
+	"arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "startup": "application",
     "boot": "auto",
     "image": "nolan/hassio-mopidy-{arch}",
