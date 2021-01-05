@@ -7,7 +7,7 @@
 	"arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "startup": "application",
     "boot": "auto",
-    "image": "nolan/hassio-mopidy-{arch}",
+    "image": "nolan/hassio-mopidy-armhf",
     "options": {
         "local_scan": true,
         "options": []
