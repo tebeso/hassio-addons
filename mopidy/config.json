@@ -1,0 +1,23 @@
+{
+    "name": "Mopidy",
+    "version": "2.1.0.9",
+    "slug": "mopidy",
+    "description": "mopidy music server",
+    "url": "https://gitlab.com/ndarilek/hassio-addons/tree/master/mopidy",
+    "startup": "application",
+    "boot": "auto",
+    "image": "nolan/hassio-mopidy-{arch}",
+    "options": {
+        "local_scan": true,
+        "options": []
+    },
+    "schema": {
+        "local_scan": "bool?",
+        "options": [{"name": "str", "value": "str"}]
+    },
+    "ports": {"6680/tcp": 6680, "6600/tcp": 6600},
+    "map": ["share"],
+    "webui": "http://[HOST]:[PORT:6680]",
+    "audio": true,
+    "host_ipc": true
+}
